@@ -95,7 +95,6 @@ CMTimeMake(30, 15);
 ### Download
 * [MJDownload](https://github.com/CoderMJLee/MJDownload.git)
 * [ZFPlayer](https://github.com/renzifeng/ZFPlayer.git)
-
 * [TCBlobDownload](https://github.com/thibaultCha/TCBlobDownload.git)
 
 ```
@@ -398,6 +397,9 @@ homebrew-cask/Caskroom），省掉了自己去下载、解压、拖拽（安装�
 
 ## Optimize
 [可以试试弃用 UILabel，使用 UIView，通过绘制一张圆角+文字的图片作为其 layer 的 contents。](http://reviewcode.cn/article.html?reviewId=7)
+
+## Device
+* [getUUID](http://www.henishuo.com/uuid-udid/)
 
 ## Http Code description
 
