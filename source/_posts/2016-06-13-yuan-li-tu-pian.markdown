@@ -9,5 +9,5 @@ categories:
 # image
 
 
-![animation](/images/CAAnimation继承结构)
+![animation](/images/CAAnimation继承结构.png)
 
