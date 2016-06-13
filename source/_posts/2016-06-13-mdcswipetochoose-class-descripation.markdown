@@ -6,7 +6,9 @@ comments: true
 categories: 
 ---
 
-MDCSwipeToChoose Class
+# MDCSwipeToChoose Class
+
+```
 1.方法工具类 MDCGeometry 
 2.状态类 MDCPanState
 3. 枚举定义 MDCSwipeDirection
@@ -17,6 +19,6 @@ MDCSwipeToChoose Class
 8.滑动选项卡View类 MDCSwipeToChooseView
 9.滑动选项卡View选择类(自定义一些行为与表现）MDCSwipeToChooseViewOptions
 10.MDCViewState
-
+```
    
 
