@@ -9,5 +9,5 @@ categories:
 # image
 
 
-![gcd](/images/gcd.png)
+![animation](/images/CAAnimation继承结构)
 
