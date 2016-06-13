@@ -11,7 +11,7 @@ categories:
 ```
 1.方法工具类 MDCGeometry 
 2.状态类 MDCPanState
-3. 枚举定义 MDCSwipeDirection
+3.枚举定义 MDCSwipeDirection
 4.滑动选择类  MDCSwipeOptions
 5.滑动选择结果类 MDCSwipeResult
 6.包含所有头文件的类 MDCSwipeToChoose
