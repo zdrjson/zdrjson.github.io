@@ -9,5 +9,7 @@ categories:
 # image
 
 
-![animation](/images/CAAnimation继承结构.png)
+![kvc原理](/images/kvc原理.png)
+![runtime](/images/runtime.png)
+
 
