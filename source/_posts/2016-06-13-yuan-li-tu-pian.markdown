@@ -7,5 +7,6 @@ categories:
 ---
  
 # image
+
  ![gcd](/images/gcd.png)
 
