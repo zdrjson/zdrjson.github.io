@@ -8,5 +8,6 @@ categories:
  
 # image
 
- ![gcd](/images/gcd.png)
+
+![gcd](/images/gcd.png)
 
