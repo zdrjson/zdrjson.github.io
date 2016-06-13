@@ -1,0 +1,17 @@
+---
+layout: post
+title: "链表"
+date: 2016-06-13 17:45:42 +0800
+comments: true
+categories: 
+---
+
+ * 1.单向链表： 一个单向链表包含两个值: 当前节点的值和一个指向下一个节点的链接
+
+ * 2.双向链表： 一个双向链表有三个整数值: 数值, 向后的节点链接, 向前的节点链接
+
+     应用 [YYMemoryCache](https://github.com/ibireme/YYCache/blob/master/YYCache/YYMemoryCache.h)
+
+ 
+ * 3.循环链表： 用单向链表构建的循环链表
+
