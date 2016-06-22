@@ -126,3 +126,6 @@ TextAndWebiPhoneOS/KeyboardManagement/KeyboardManagement.html
 ```
 
 
+## reference
+[『零行代码』解决键盘遮挡问题（iOS）](https://github.com/Draveness/iOS-Source-Code-Analyze/blob/master/IQKeyboardManager/『零行代码』解决键盘遮挡问题（iOS）.md)
+
