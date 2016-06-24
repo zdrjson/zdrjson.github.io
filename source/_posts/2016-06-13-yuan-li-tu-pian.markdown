@@ -9,5 +9,5 @@ categories:
 # image
 
 
-![yousouddo](/images/yousouddo.png)
+![yousouddo](/images/blogImage/yousouddo.png)
 
