@@ -67,7 +67,139 @@ categories:
 ```
 
 
+```
+- (void)hide:(BOOL)animated {
+    //判断是否在主线程 非主线程直接崩
+    NSAssert([NSThread isMainThread], @"MBProgressHUD needs to be accessed on the main thread.");
+	useAnimation = animated;
+	// If the minShow time is set, calculate how long the hud was shown,
+	// and pospone the hiding operation if necessary
+	//如果设置了最短展示时间，先比较展示到现在的时间与最短时间,如果前者小设置self.minShowTimer(有什么用？)，然后返回，在 (self.minShowTime - interv)差值时间后 执行
+		[self hideUsingAnimation:useAnimation];
+		
+	if (self.minShowTime > 0.0 && showStarted) {
+		NSTimeInterval interv = [[NSDate date] timeIntervalSinceDate:showStarted];
+		if (interv < self.minShowTime) {
+			self.minShowTimer = [NSTimer scheduledTimerWithTimeInterval:(self.minShowTime - interv) target:self 
+								selector:@selector(handleMinShowTimer:) userInfo:nil repeats:NO];
+			return;
+		} 
+	}
+	// ... otherwise hide the HUD immediately
+	[self hideUsingAnimation:useAnimation];
+}
+```
 
+//隐藏主方法
+```
+- (void)hideUsingAnimation:(BOOL)animated {
+	// Fade out
+	if (animated && showStarted) {
+		[UIView beginAnimations:nil context:NULL];
+		[UIView setAnimationDuration:0.30];
+		[UIView setAnimationDelegate:self];
+		[UIView setAnimationDidStopSelector:@selector(animationFinished:finished:context:)];
+		// 0.02 prevents the hud from passing through touches during the animation the hud will get completely hidden
+		// in the done method
+		if (animationType == MBProgressHUDAnimationZoomIn) {
+			self.transform = CGAffineTransformConcat(rotationTransform, CGAffineTransformMakeScale(1.5f, 1.5f));
+		} else if (animationType == MBProgressHUDAnimationZoomOut) {
+			self.transform = CGAffineTransformConcat(rotationTransform, CGAffineTransformMakeScale(0.5f, 0.5f));
+		}
+
+		self.alpha = 0.02f;
+		[UIView commitAnimations];
+	}
+	else {
+		self.alpha = 0.0f;
+		//主要这行代码
+		[self done];
+	}
+	//清空showStarted
+	self.showStarted = nil;
+}
+```
+
+```
+- (void)done {
+	[NSObject cancelPreviousPerformRequestsWithTarget:self];
+	//清空
+	isFinished = YES;
+	self.alpha = 0.0f;
+	if (removeFromSuperViewOnHide) {
+		[self removeFromSuperview];
+	}
+	//回调block与delegate,但得先判断
+#if NS_BLOCKS_AVAILABLE
+	if (self.completionBlock) {
+		self.completionBlock();
+		self.completionBlock = NULL;
+	}
+#endif
+	if ([delegate respondsToSelector:@selector(hudWasHidden:)]) {
+		[delegate performSelector:@selector(hudWasHidden:) withObject:self];
+	}
+}
+```
+
+
+### 关于自定义label或者detailLabel属性,作者用了KVO
+
+```
+#pragma mark - KVO
+
+- (void)registerForKVO {
+	for (NSString *keyPath in [self observableKeypaths]) {
+		[self addObserver:self forKeyPath:keyPath options:NSKeyValueObservingOptionNew context:NULL];
+	}
+}
+
+- (void)unregisterFromKVO {
+	for (NSString *keyPath in [self observableKeypaths]) {
+		[self removeObserver:self forKeyPath:keyPath];
+	}
+}
+
+- (NSArray *)observableKeypaths {
+	return [NSArray arrayWithObjects:@"mode", @"customView", @"labelText", @"labelFont", @"labelColor",
+			@"detailsLabelText", @"detailsLabelFont", @"detailsLabelColor", @"progress", @"activityIndicatorColor", nil];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+	if (![NSThread isMainThread]) {
+		[self performSelectorOnMainThread:@selector(updateUIForKeypath:) withObject:keyPath waitUntilDone:NO];
+	} else {
+		[self updateUIForKeypath:keyPath];
+	}
+}
+
+- (void)updateUIForKeypath:(NSString *)keyPath {
+	if ([keyPath isEqualToString:@"mode"] || [keyPath isEqualToString:@"customView"] ||
+		[keyPath isEqualToString:@"activityIndicatorColor"]) {
+		[self updateIndicators];
+	} else if ([keyPath isEqualToString:@"labelText"]) {
+		label.text = self.labelText;
+	} else if ([keyPath isEqualToString:@"labelFont"]) {
+		label.font = self.labelFont;
+	} else if ([keyPath isEqualToString:@"labelColor"]) {
+		label.textColor = self.labelColor;
+	} else if ([keyPath isEqualToString:@"detailsLabelText"]) {
+		detailsLabel.text = self.detailsLabelText;
+	} else if ([keyPath isEqualToString:@"detailsLabelFont"]) {
+		detailsLabel.font = self.detailsLabelFont;
+	} else if ([keyPath isEqualToString:@"detailsLabelColor"]) {
+		detailsLabel.textColor = self.detailsLabelColor;
+	} else if ([keyPath isEqualToString:@"progress"]) {
+		if ([indicator respondsToSelector:@selector(setProgress:)]) {
+			[(id)indicator setValue:@(progress) forKey:@"progress"];
+		}
+		return;
+	}
+	[self setNeedsLayout];
+	[self setNeedsDisplay];
+}
+
+```
 
 
 ## reference 
