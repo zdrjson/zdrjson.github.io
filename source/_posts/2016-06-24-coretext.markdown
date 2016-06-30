@@ -6,7 +6,7 @@ comments: true
 categories: 
 ---
 
-  ![yousouddo](/images/blogImage/CoreText.png)
+  ![CoreText](/images/blogImage/CoreText.png)
 
 ## 优化
    

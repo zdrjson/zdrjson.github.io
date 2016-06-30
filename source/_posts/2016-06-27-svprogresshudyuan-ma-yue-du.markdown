@@ -7,9 +7,10 @@ categories:
 ---
 
  首先看一下SVProgressHUD结构，4个类
-  SVProgressHUD 核心类
+  SVProgressHUD 核心类，头文件都是类方法,继承UIView
   SVProgressAnimatedView 与 SVProgressAnimatedView 是动画View
   SVRadialGradientLayer 是Calayer 子类 ，只有一个属性设置 gradientCenter
+ 
  
 
   平时写的最多方法之一
@@ -97,5 +98,7 @@ categories:
 
 ```
   
+## 小结
+SVProgress:
 
 
