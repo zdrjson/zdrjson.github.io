@@ -50,6 +50,7 @@ categories:
             [strongSelf updateViewHierachy];
             
             // Reset imageView and fadeout timer if an image is currently displayed
+            //第一次初始化 self.imageView以及 父View self.hudView
             strongSelf.imageView.hidden = YES;
             strongSelf.imageView.image = nil;
             
@@ -97,8 +98,71 @@ categories:
 }
 
 ```
+
+
+```
+ [strongSelf updateViewHierachy];
+ 会调用
+ 
+ - (void)updateViewHierachy {
+    // Add the overlay (e.g. black, gradient) to the application window if necessary
+    if(!self.overlayView.superview) {
+#if !defined(SV_APP_EXTENSIONS)
+        // Default case: iterate over UIApplication windows
+        NSEnumerator *frontToBackWindows = [UIApplication.sharedApplication.windows reverseObjectEnumerator];
+        //reverseObjectEnumerator 数组反序
+        
+
+        
+        for (UIWindow *window in frontToBackWindows) {
+            NSLog(@"%@",window);
+            BOOL windowOnMainScreen = window.screen == UIScreen.mainScreen;
+            BOOL windowIsVisible = !window.hidden && window.alpha > 0;
+            BOOL windowLevelNormal = window.windowLevel == UIWindowLevelNormal;
+            NSLog(@"%d",UIWindowLevelNormal);
+            NSLog(@"%d",window.windowLevel);
+            NSLog(@"%d",windowLevelNormal);
+            if(windowOnMainScreen && windowIsVisible && windowLevelNormal) {
+                [window addSubview:self.overlayView];
+                break;
+            }
+        }
+#else
+        // If SVProgressHUD ist used inside an app extension add it to the given view
+        if(self.viewForExtension) {
+            [self.viewForExtension addSubview:self.overlayView];
+        }
+#endif
+    } else {
+        // The HUD is already on screen, but maybot not in front. Therefore
+        // ensure that overlay will be on top of rootViewController (which may
+        // be changed during runtime).
+        [self.overlayView.superview bringSubviewToFront:self.overlayView];
+    }
+    
+    
+    // Add self to the overlay view
+    if(!self.superview){
+        [self.overlayView addSubview:self];
+    }
+    if(!self.hudView.superview) {
+        [self addSubview:self.hudView];
+    }
+   最后形成
+   window add self.overlayview 
+   self.overlayview add self
+   self add self.hud
+   // widnow、 self.overlayview、self 的frame 为全屏
+   //self.hud frame 为 CGRectZero 
+}
+ 
+ 
+ 
+```
   
 ## 小结
 SVProgress:
+
+
 
 
