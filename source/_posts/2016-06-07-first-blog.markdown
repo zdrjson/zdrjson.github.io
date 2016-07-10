@@ -5,7 +5,14 @@ date: 2016-06-07 11:03:02 +0800
 comments: true
 categories: 
 ---
+
 # DDNote
+
+## **Algorithm**
+* [Direct insertion sort](http://www.henishuo.com/insert-sort/)
+* [张不坏的博客](http://zhangbuhuai.com/2015/06/28/Array-and-Algorithm/)
+
+
 
 ## Animaton
 ### TransitionAnimation
@@ -30,6 +37,7 @@ categories:
 * [TinderSimpleSwipeCards](https://github.com/cwRichardKim/TinderSimpleSwipeCards)
 * [ZLSwipeableView](https://github.com/zhxnlai/ZLSwipeableView)
 * [Koloda](https://github.com/Yalantis/Koloda)
+* [HotGirls](https://github.com/zangqilong198812/HotGirls)
 
 ### GestureAnimation
 * [DraggableYoutubeFloatingVideo](https://github.com/vizllx/DraggableYoutubeFloatingVideo)
@@ -63,6 +71,8 @@ categories:
 * [AVFoundation(一):基础知识](http://www.jianshu.com/p/485e946f80b4)
 * [AVFoundation(二)：核心AVAsset](http://www.jianshu.com/p/9805be76ee68)
 * [iOS音视频实现边下载边播放](http://sky-weihao.github.io/2015/10/06/Video-streaming-and-caching-in-iOS/)
+* [CTVideoPlayerView](https://github.com/casatwy/CTVideoPlayerView)
+* [Eleven Player is a simple powerful video player.use ffmpeg](https://github.com/coderyi/Eleven)
 
 ```
 CMTimeMake和CMTimeMakeWithSeconds 详解 
@@ -198,6 +208,8 @@ What it provides
 ### LiveVideo
 * [LiveVideoCoreSDK](https://github.com/runner365/LiveVideoCoreSDK)
 * [SmarterStreaming](https://github.com/daniulive/SmarterStreaming)
+* [主流跨平台媒体库ffmpeg，live555，MobileVLCKit简介](https://segmentfault.com/a/1190000002953107)
+* [MiaowShow iOS视频直播项目](https://github.com/SunLiner/MiaowShow)
 
 ##Audio
 * [MPVolumeView_iOS program modification system volume](https://segmentfault.com/a/1190000002401961)
@@ -205,14 +217,28 @@ What it provides
 ## Image
 
 ### Gif 
-[FLAnimatedImage](https://github.com/Flipboard/FLAnimatedImage)
-[sever return 304](http://weibo.com/1247589445/DwgHFs2cF?type=repost)
+* [FLAnimatedImage](https://github.com/Flipboard/FLAnimatedImage)
+* [sever return 304](http://weibo.com/1247589445/DwgHFs2cF?type=repost)
+* [关于UIImage的内存问题与解决方案](https://github.com/Magic-Unique/HXImage/blob/master/description.md)
+
 
 ## View
 * [scrollView To Top](http://www.jianshu.com/p/68632cbd6263)
 * [why SDWebImageDecoder](http://www.jianshu.com/p/135e17c7d10f)
 * [Y_KLine](https://github.com/yate1996/Y_KLine)
 * [StockKLine](https://github.com/mengmanzbh/StockKLine)
+* [高仿支付宝解锁](https://github.com/CharlinFeng/CoreLock)
+
+### 占位视图
+* [DZNEmptyDataSet](https://github.com/dzenbot/DZNEmptyDataSet)
+* [CYLTableViewPlaceHolder](https://github.com/ChenYilong/CYLTableViewPlaceHolder)
+
+### MessageKit
+* [Atlas-iOS](https://github.com/layerhq/Atlas-iOS)
+
+
+### Button
+* [图片与文字不定Btn](https://github.com/lianchengjiang/LCUIKit)
 
 
 
@@ -230,17 +256,20 @@ CAShapeLayer有着几点很重要:
 1. 它依附于一个给定的path,必须给与path,而且,即使path不完整也会自动首尾相接
 2. strokeStart以及strokeEnd代表着在这个path中所占用的百分比
 ```
-
+* [CAGradientLayer](https://zsisme.gitbooks.io/ios-/content/chapter6/cagradientLayer.html)
 
 
 ## Model
 * [YYModel basic knowledge](http://www.jianshu.com/p/198af7042b2d)
+* [YYModel 源码历险记](http://www.jianshu.com/users/aa41dad549af/latest_articles)
+* [YYModel Part](http://xiongzenghuidegithub.github.io/blog/archives/)
 
 ## Cache
 * [FMDB](https://github.com/ccgus/fmdb)
 * [realm](https://github.com/realm/realm-cocoa)
 * [MagicalRecord](https://github.com/magicalpanda/MagicalRecord)
 * [VIMediaCache](https://github.com/vitoziv/VIMediaCache)
+* [NSURLCache 网络请求缓存指南](http://www.cocoachina.com/ios/20160701/16895.html)
 
 ## Text
 * [CoreText_xiongzenghu](http://xiongzenghuidegithub.github.io/blog/2016/04/26/coretext-part-3/)
@@ -248,10 +277,20 @@ CAShapeLayer有着几点很重要:
 * [TTTAttributedLabel](https://github.com/TTTAttributedLabel/TTTAttributedLabel)
 * [UILabel replacement with fine-grain appear/disappear animation](https://github.com/overboming/ZCAnimatedLabel)
 * [TYAttrubutedLabel](https://github.com/12207480/TYAttributedLabel)
+* [YYText 是如何绘制的](https://github.com/lzwjava/OpenSourceNotes)
+
+
+
+
 
 
 ## AutoLayout
 * [Autolayout standard style of writing](http://reviewcode.cn/article.html?reviewId=14)
+* [Masonry 源码解析](https://github.com/Draveness/iOS-Source-Code-Analyze/blob/master/Masonry/iOS%20源代码分析%20---%20Masonry.md)
+* [HandyAutoLayout](https://github.com/casatwy/HandyAutoLayout)
+* [SDAutoLayout](https://github.com/gsdios/SDAutoLayout)
+* [Masonry](https://github.com/SnapKit/Masonry)
+* [FDStackView —— Downward Compatible UIStackView](http://blog.wtlucky.com)
 
 ## CADisplayLink
 * [CADisplayLink](http://www.jianshu.com/p/c35a81c3b9eb)
@@ -261,6 +300,14 @@ CAShapeLayer有着几点很重要:
 * [IOP](http://casatwy.com/tiao-chu-mian-xiang-dui-xiang-si-xiang-er-duo-tai.html)
 * [OUT OF OOP-package](http://casatwy.com/tiao-chu-mian-xiang-dui-xiang-si-xiang-san-feng-zhuang.html)
 * [know or understand](http://casatwy.com/zen-yao-mian-shi-jia-gou-shi.html)
+* [路由跳转的思考](http://awhisper.github.io/2016/06/12/路由跳转的思考/)
+* [CDD](http://mrpeak.cn/blog/cdd/)
+* [天猫架构解耦之路 by gaosboy（高嘉峻)](http://weibo.com/1708947107/DBQxn64gC?type=repost#_rnd1467178225666)
+* [新浪微博iOS客户端架构与优化之路](http://mp.weixin.qq.com/s?__biz=MzA3ODg4MDk0Ng==&mid=2651112273&idx=1&sn=893a66a04e541a99b7bc4d7cf227e2f7#rd)
+* [滴滴出行iOS客户端架构演进之路](http://mp.weixin.qq.com/s?__biz=MzA3ODg4MDk0Ng==&mid=402854111&idx=1&sn=5876e615fabd6d921285d904e16670fb#rd)
+* [面向切面编程之 Aspects 源码解析及应用](http://wereadteam.github.io/2016/06/30/Aspects/)
+* [解耦神器 —— 统跳协议和Rewrite引擎_Gaosboy](http://pingguohe.net/2015/11/24/Navigator-and-Rewrite.html?from=timeline&isappinstalled=0)
+
 
 ### FRP
 * [RAC](https://github.com/ReactiveCocoaChina/ReactiveCocoaChineseResources)
@@ -274,11 +321,30 @@ CAShapeLayer有着几点很重要:
 * [PerformanceMonitor](https://github.com/suifengqjn/PerformanceMonitor)
 * [RunLoop学习笔记](http://www.starming.com/index.php?v=index&view=74)
 * [深入理解RunLoop](http://blog.ibireme.com/2015/05/18/runloop/)
+* [sunny runloop实战](http://blog.sunnyxx.com/2015/05/17/cell-height-calculation/)
+* [NSRunLoop、参与多线程之间的通信](http://xiongzenghuidegithub.github.io/blog/2015/08/21/nsrunloop,-can-yu-duo-xian-cheng-zhi-jian-de-tong-xin/)
+* [iOS实时卡顿监控](http://ios.jobbole.com/83742/)
+
+## Runtime
+* [翻译-为什么objc_msgSend必须用汇编实现](http://tutuge.me/2016/06/19/translation-why-objcmsgsend-must-be-written-in-assembly/)
+* [Objective-C 消息发送与转发机制原理](http://yulingtianxia.com/blog/2016/06/15/Objective-C-Message-Sending-and-Forwarding/)
+* [Calling Conventions](http://slides.com/sunnyxx/calling-conventions-in-cocoa#/)
+* [如何动态调用 C 函数](http://mp.weixin.qq.com/s?__biz=MzIzNTQ2MDg2Ng==&mid=2247483687&idx=1&sn=94d3ce224e5e25f2e1ae8a6046efb472#rd)
+
+## SQLite
+* [GYDataCenter](https://github.com/Zepo/GYDataCenter)
+* [CTPersistance](https://github.com/casatwy/CTPersistance)
+* [FMDB](https://github.com/ccgus/fmdb)
+
+## Socket
+* [微信、陌陌等著名IM软件设计架构详解](http://blog.csdn.net/justinjing0612/article/details/38322353)
 
 ##Cocoapods
 * [ERROR: While executing gem ... (Errno::EPERM) Operation not permitted - /usr/bin/pod](http://stackoverflow.com/questions/30812777/cannot-install-cocoa-pods-after-uninstalling-results-in-error/30851030#30851030)
 * [Operation not permitted - /usr/bin/fuzzy_match](http://blog.csdn.net/sinat_29998157/article/details/50070687)
 * [While executing gem ... (TypeError) no implicit conversion of nil into String](http://stackoverflow.com/questions/25844937/how-to-install-cocoa-pods-in-terminal)
+* [When using cocoapods, what is the best way to change the PRODUCT_NAME?](http://stackoverflow.com/questions/31120403/when-using-cocoapods-what-is-the-best-way-to-change-the-product-name)
+* [理解Cocoapods](https://segmentfault.com/a/1190000005041357)
 
 ##SomeGuysBlog
 * [WeiXinRead](http://wereadteam.github.io)
@@ -292,6 +358,7 @@ CAShapeLayer有着几点很重要:
 * [casa](http://casatwy.com)
 * [leichunfeng](http://blog.leichunfeng.com)
 * [YY](http://blog.ibireme.com)
+* [YY github ios list](http://github.ibireme.com/github/list/ios/)
 * [onev](https://onevcat.com)
 * [youxianming](http://www.cnblogs.com/YouXianMing/)
 * [JohnLui](https://lvwenhan.com)
@@ -313,13 +380,32 @@ CAShapeLayer有着几点很重要:
 * [kissGod](http://www.jianshu.com/users/8d704c0faf00/latest_articles)
 * [bang](http://blog.cnbang.net/archives/)
 * [TomatoRead](https://github.com/everettjf/TomatoRead)
+* [玉令天下的博客](http://yulingtianxia.com/blog/2016/06/15/Objective-C-Message-Sending-and-Forwarding/)
+* [bestswifter](https://bestswifter.com)
+* [百度Hi团队 iOS 技术周报](https://github.com/BaiduHiDeviOS/iOS-Tech-Weekly)
+* [iOS-Source-Code-Analyze](https://github.com/Draveness/iOS-Source-Code-Analyze)
+* [Ghost博客搭建 - 追随猫神之路](http://402v.com/ghostbo-ke-da-jian-xi-lie-zhui-sui-mao-shen-zhi-lu/)
+* [MartinRGB](http://www.martinrgb.com)
+* [阮一峰的网络日志](http://www.ruanyifeng.com/blog/)
+* [iPic](http://toolinbox.net)
 
 ## Git
 * [Git Flow](http://www.jianshu.com/p/fa83b6858d52)
 * [如何解决GitHub commit次数过多.git文件过大的问题?](https://www.zhihu.com/question/29769130)
 * [if you change your password or username on GitHub](https://help.github.com/articles/updating-credentials-from-the-osx-keychain/)
+* [git 原理](http://gold.xitu.io/entry/575e223a165abd005559294f)
 
-### gitpages
+```
+git Alias
+autoPush() {
+    git add -A
+    git commit -m $1
+    git push
+}
+alias g=autoPush
+```
+
+### Gitpages
 * [southpeak.github.io](http://southpeak.github.io)
   
   
@@ -335,18 +421,25 @@ exiting properly.
 NSTimer 在哪个线程创建就要在哪个线程停止，否则会导致资源不能被正确的释放。看起来各种坑还不少。
 
 ```
- 
-## Algorithm
-* [Direct insertion sort](http://www.henishuo.com/insert-sort/)
 
 ## Efficiency 
 * [Mac_MrPeak](http://mrpeak.cn/blog/mac-efficiency/)
+
 
 ## Tool
 * [Phabricator](http://phabricator.org/)
 * [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)
 * [Homebrew](http://brew.sh/)
-* [fastlane(`The easiest way to automate building and releasing your iOS and Android apps`)](https://github.com/fastlane/fastlane)
+* [fastlane(`The easiest way to automate building and releasing your iOS and Android apps`)打包Tool](https://github.com/fastlane/fastlane)
+* [Charles抓包心得](http://itangqi.me/2016/05/30/tips-for-using-charles/#more)
+* [Surge原理](http://gold.xitu.io/entry/562eef4900b0acaac036ac11)
+* [WWDC 410 Visual Debugging With Xcode](https://mp.weixin.qq.com/s?__biz=MzIwMTYzMzcwOQ==&mid=2650948410&idx=1&sn=c48375a832b8769a0f43a293a3f09fe3&scene=0&key=f8ab7b995657050bada4064a262d2959647e1b5f90d16dc6aacd29bbb714ed1c9ab7d221648976431d558244cd7f7f4c&ascene=0&uin=NDU1NzA2MTk1&devicetype=iMac+MacBookPro12%2C1+OSX+OSX+10.11.5+build(15F34)&version=11020201&pass_ticket=H4NFpA%2FV2mGlXbz6iuyTOJnJk06Bxbxc4ZX3kEuhqXJbEyQiJG8zuAWpLkapt%2F31)
+* [Surge config](https://github.com/lhie1/Surge)
+* [AppleDNS](https://github.com/gongjianhui/AppleDNS)
+* [alfred workflow 李大锤同学](http://weibo.com/lizexipablo?profile_ftype=1&is_all=1&is_search=1&key_word=alfred#_0)
+* [鼠须管](https://github.com/rime/squirrel)
+* [Mac  开发者  怕雾霾和没vim  设计师](http://liqi.io/zhangbin/)
+* [Mac  Swift  同用书垫电脑  开发者](http://liqi.io/wangling/)
 
 
 
@@ -375,6 +468,13 @@ homebrew-cask/Caskroom），省掉了自己去下载、解压、拖拽（安装�
 * [TimLiu-iOS](https://github.com/Tim9Liu9/TimLiu-iOS)
 * [链式编程1](http://www.jianshu.com/p/87ef6720a096)
 * [链式编程2](http://xiongzenghuidegithub.github.io/blog/2015/12/04/blockmo-ni-lian-shi-yu-fa/)
+* [一些 iOS / Web 开发相关的翻译或原创博客文章](https://github.com/nixzhu/dev-blog)
+* [YY整理- ( ゜- ゜)つロ Github-iOS备忘](http://github.ibireme.com/github/list/ios/)
+
+
+## 设计模式
+* [youxianming](http://www.cnblogs.com/YouXianMing/tag/软件设计原则/)
+* [leichunfeng](https://github.com/leichunfeng/DesignPatterns-Objective-C)
 
 
 
@@ -382,6 +482,8 @@ homebrew-cask/Caskroom），省掉了自己去下载、解压、拖拽（安装�
 * roundf 将浮点值四舍五入为最接近的整数
 * `pow() 函数用来求 x 的 y 次幂（次方），其原型为：
     double pow(double x, double y);`
+* `usleep函数能把进程挂起一段时间， 单位是微秒（千分之一毫秒）`
+
 
 ## NetWorking
 * [RTNetworking](https://github.com/casatwy/RTNetworking)
@@ -396,10 +498,14 @@ homebrew-cask/Caskroom），省掉了自己去下载、解压、拖拽（安装�
 * [iOS中的 NSURLProtocol](http://www.jianshu.com/p/0244e431fb3c)
 
 ## Optimize
-[可以试试弃用 UILabel，使用 UIView，通过绘制一张圆角+文字的图片作为其 layer 的 contents。](http://reviewcode.cn/article.html?reviewId=7)
+* [可以试试弃用 UILabel，使用 UIView，通过绘制一张圆角+文字的图片作为其 layer 的 contents。](http://reviewcode.cn/article.html?reviewId=7)
+* [YYModel 性能优化的几个 Tip：](http://blog.ibireme.com/2015/10/23/ios_model_framework_benchmark/)
 
 ## Device
 * [getUUID](http://www.henishuo.com/uuid-udid/)
+
+## Xcode 
+* [iOS应用程序打包](http://www.jianshu.com/p/bd953c3e389f)
 
 ## Http Code description
 
@@ -453,165 +559,27 @@ Error 501       – 未实现
 HTTP 502       – 网关错误
 ```
 
-## IQKeyboardManager
-```
-/*
- 
- /---------------------------------------------------------------------------------------------------\
- \---------------------------------------------------------------------------------------------------/
- |                                   iOS NSNotification Mechanism                                    |
- /---------------------------------------------------------------------------------------------------\
- \---------------------------------------------------------------------------------------------------/
- 
- 1) Begin Editing:-         When TextField begin editing.
- 2) End Editing:-           When TextField end editing.
- 3) Switch TextField:-      When Keyboard Switch from a TextField to another TextField.
- 3) Orientation Change:-    When Device Orientation Change.
- 
- 
- ----------------------------------------------------------------------------------------------------------------------------------------------
- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
- ----------------------------------------------------------------------------------------------------------------------------------------------
- =============
- UITextField
- =============
- 
- Begin Editing                                Begin Editing
- --------------------------------------------           ----------------------------------           ---------------------------------
- |UITextFieldTextDidBeginEditingNotification| --------> | UIKeyboardWillShowNotification | --------> | UIKeyboardDidShowNotification |
- --------------------------------------------           ----------------------------------           ---------------------------------
- ^                  Switch TextField             ^               Switch TextField
- |                                               |
- |                                               |
- | Switch TextField                              | Orientation Change
- |                                               |
- |                                               |
- |                                               |
- --------------------------------------------    |      ----------------------------------           ---------------------------------
- | UITextFieldTextDidEndEditingNotification | <-------- | UIKeyboardWillHideNotification | --------> | UIKeyboardDidHideNotification |
- --------------------------------------------           ----------------------------------           ---------------------------------
- |                    End Editing                                                             ^
- |                                                                                            |
- |--------------------End Editing-------------------------------------------------------------|
- 
- 
- ----------------------------------------------------------------------------------------------------------------------------------------------
- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
- ----------------------------------------------------------------------------------------------------------------------------------------------
- =============
- UITextView
- =============
- |-------------------Switch TextView--------------------------------------------------------------|
- | |------------------Begin Editing-------------------------------------------------------------| |
- | |                                                                                            | |
- v |                  Begin Editing                               Switch TextView               v |
- --------------------------------------------           ----------------------------------           ---------------------------------
- | UITextViewTextDidBeginEditingNotification| <-------- | UIKeyboardWillShowNotification | --------> | UIKeyboardDidShowNotification |
- --------------------------------------------           ----------------------------------           ---------------------------------
- ^
- |
- |------------------------Switch TextView--------|
- |                                               | Orientation Change
- |                                               |
- |                                               |
- |                                               |
- --------------------------------------------    |      ----------------------------------           ---------------------------------
- | UITextViewTextDidEndEditingNotification  | <-------- | UIKeyboardWillHideNotification |           | UIKeyboardDidHideNotification |
- --------------------------------------------           ----------------------------------           ---------------------------------
- |                    End Editing                                                             ^
- |                                                                                            |
- |--------------------End Editing-------------------------------------------------------------|
- 
- 
- ----------------------------------------------------------------------------------------------------------------------------------------------
- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
- ----------------------------------------------------------------------------------------------------------------------------------------------
- */
-```
 
-### SDWebImage 删除过期图片算法
+
+# 小知识
 
 ```
-- (void)cleanDiskWithCompletionBlock:(SDWebImageNoParamsBlock)completionBlock {
-    dispatch_async(self.ioQueue, ^{
-        NSURL *diskCacheURL = [NSURL fileURLWithPath:self.diskCachePath isDirectory:YES];
-        NSArray *resourceKeys = @[NSURLIsDirectoryKey, NSURLContentModificationDateKey, NSURLTotalFileAllocatedSizeKey];
-
-        // This enumerator prefetches useful properties for our cache files.
-        NSDirectoryEnumerator *fileEnumerator = [_fileManager enumeratorAtURL:diskCacheURL
-                                                   includingPropertiesForKeys:resourceKeys
-                                                                      options:NSDirectoryEnumerationSkipsHiddenFiles
-                                                                 errorHandler:NULL];
-
-        NSDate *expirationDate = [NSDate dateWithTimeIntervalSinceNow:-self.maxCacheAge];
-        NSMutableDictionary *cacheFiles = [NSMutableDictionary dictionary];
-        NSUInteger currentCacheSize = 0;
-
-        // Enumerate all of the files in the cache directory.  This loop has two purposes:
-        //
-        //  1. Removing files that are older than the expiration date.
-        //  2. Storing file attributes for the size-based cleanup pass.
-        NSMutableArray *urlsToDelete = [[NSMutableArray alloc] init];
-        for (NSURL *fileURL in fileEnumerator) {
-            NSDictionary *resourceValues = [fileURL resourceValuesForKeys:resourceKeys error:NULL];
-
-            // Skip directories.
-            if ([resourceValues[NSURLIsDirectoryKey] boolValue]) {
-                continue;
-            }
-
-            // Remove files that are older than the expiration date;
-            NSDate *modificationDate = resourceValues[NSURLContentModificationDateKey];
-            if ([[modificationDate laterDate:expirationDate] isEqualToDate:expirationDate]) {
-                [urlsToDelete addObject:fileURL];
-                continue;
-            }
-
-            // Store a reference to this file and account for its total size.
-            NSNumber *totalAllocatedSize = resourceValues[NSURLTotalFileAllocatedSizeKey];
-            currentCacheSize += [totalAllocatedSize unsignedIntegerValue];
-            [cacheFiles setObject:resourceValues forKey:fileURL];
-        }
-        
-        for (NSURL *fileURL in urlsToDelete) {
-            [_fileManager removeItemAtURL:fileURL error:nil];
-        }
-
-        // If our remaining disk cache exceeds a configured maximum size, perform a second
-        // size-based cleanup pass.  We delete the oldest files first.
-        if (self.maxCacheSize > 0 && currentCacheSize > self.maxCacheSize) {
-            // Target half of our maximum cache size for this cleanup pass.
-            const NSUInteger desiredCacheSize = self.maxCacheSize / 2;
-
-            // Sort the remaining cache files by their last modification time (oldest first).
-            NSArray *sortedFiles = [cacheFiles keysSortedByValueWithOptions:NSSortConcurrent
-                                                            usingComparator:^NSComparisonResult(id obj1, id obj2) {
-                                                                return [obj1[NSURLContentModificationDateKey] compare:obj2[NSURLContentModificationDateKey]];
-                                                            }];
-
-            // Delete files until we fall below our desired cache size.
-            for (NSURL *fileURL in sortedFiles) {
-                if ([_fileManager removeItemAtURL:fileURL error:nil]) {
-                    NSDictionary *resourceValues = cacheFiles[fileURL];
-                    NSNumber *totalAllocatedSize = resourceValues[NSURLTotalFileAllocatedSizeKey];
-                    currentCacheSize -= [totalAllocatedSize unsignedIntegerValue];
-
-                    if (currentCacheSize < desiredCacheSize) {
-                        break;
-                    }
-                }
-            }
-        }
-        if (completionBlock) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                completionBlock();
-            });
-        }
-    });
-}
-
+isKindOfClass来确定一个对象是否是一个类的成员，或者是派生自该类的成员
+isMemberOfClass只能确定一个对象是否是当前类的成员
 ```
 
+```
+删除Xcode多余描述文件
+~/Library/MobileDevice/Provisioning Profiles
+```
+
+```
+快速入门写接口 Node.js
+rnr,flask,express
+```
+
+* [纯IPv6环境App适配的坑](http://mrpeak.cn/blog/ipv6/)
+* [前端技能汇总](https://github.com/JacksonTian/fks)
 
 #CSS
 
@@ -619,10 +587,58 @@ HTTP 502       – 网关错误
 W3C对于ID和CLASS的设定是ID具有唯一性，class具有普遍性。所以说我们用他们俩的时候就要按照这个特性
 来使用。id 是不能重复的，class 却是可以重复使用，通过id可以找到页面上唯一的一个标签，而class呢
 可以多个标签使用同一种样式提供了可能
-```												
+```									
+			
+#HTML
+
+* [HTML 5 <a> 标签的 target 属性](http://www.w3school.com.cn/html5/att_a_target.asp)
+
+#JS
+* [详解js跨域问题](https://segmentfault.com/a/1190000000718840)
+* [js标准对象](http://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000/00143449957099176f55ba07b764c3daa522217d0e42643000)
+* [JavaScript 之 this 详解](http://www.jeffjade.com/2015/08/03/2015-08-03-javascript-this/?hmsr=toutiao.io&utm_medium=toutiao.io&utm_source=toutiao.io)
+* [Node.js 包教不包会](https://github.com/alsotang/node-lessons)
+* [vue.js 60分钟快速入门](http://www.cnblogs.com/keepfool/p/5625583.html)
+* [lihei_jquery](http://blog.csdn.net/lihei12345/article/category/2393611)
+
+
+## 前端
+
+* [前端工程师手册](https://leohxj.gitbooks.io/front-end-database/content/preference/browser-rendering-performance.html)
+
+### IDE
+* [brackets](https://github.com/adobe/brackets)
+* [atom](https://github.com/atom/atom)
+
+
+
+# Python
+
+* [Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/bs4/doc.zh/index.html)
+* [scrapy](https://github.com/scrapy/scrapy)
+* [urllib3](https://github.com/shazow/urllib3)
+* [requests](https://github.com/kennethreitz/requests)
+* [youtube-dl](https://github.com/rg3/youtube-dl)
+* [you-get](https://github.com/soimort/you-get)
+* [Python的所有内置函数](https://docs.python.org/3/library/functions.html)
+
+# DNS 
+[DNS 原理入门](http://www.ruanyifeng.com/blog/2016/06/dns.html)
+
+# Shell
+* [Shell 编程初探](http://draveness.me/shell-bian-cheng-chu-tan/)
+* [入门bash Shell脚本](http://blog.wtlucky.com/blog/2013/05/02/start-write-shell/)
+
+# VPN
+* [clowwindy](https://github.com/clowwindy?tab=repositories)
+* [Potatso](https://github.com/shadowsocks/Potatso)
+* [VPNOn](https://github.com/lexrus/VPNOn)
+* [FireUpYourVPN](https://github.com/johnlui/FireUpYourVPN)
 
 
 
 
+
+## 用telnet命令来测试服务器
 
 

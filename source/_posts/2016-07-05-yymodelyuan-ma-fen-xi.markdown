@@ -49,6 +49,24 @@ NSObject+YYModel 提共的功能方法
 
 NSObject 分类方法就这么多，没有比较偏的，都是常用方法
 
+接下来是Array分类方法
+
++ (nullable NSArray *)modelArrayWithClass:(Class)cls json:(id)json;
+
+接下来是NSDictionary分类方法
+
++ (nullable NSDictionary *)modelDictionaryWithClass:(Class)cls json:(id)json;
+
+最后是 @protocol YYModel <NSObject> 协议方法
+都是可选
+
+//设置自定义属性名
++ (nullable NSDictionary<NSString *, id> *)modelCustomPropertyMapper;
+
+//设置容器对应的类
++ (nullable NSDictionary<NSString *, id> *)modelContainerPropertyGenericClass;
+
+
 ```
 
 
