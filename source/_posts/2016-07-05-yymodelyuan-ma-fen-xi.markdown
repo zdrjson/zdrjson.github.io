@@ -11,6 +11,9 @@ categories:
 
   
 ```
+YYEncodingType 枚举 用来区分不同变量(第八位)、Qualifier(第8至16位)、属性(第16-24位类型)的类型、
+
+
 YYClassIvarInfo
 YYClassMethodInfo
 YYClassPropertyInfo
