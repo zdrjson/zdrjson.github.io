@@ -69,7 +69,21 @@ NSObject 分类方法就这么多，没有比较偏的，都是常用方法
 //设置容器对应的类
 + (nullable NSDictionary<NSString *, id> *)modelContainerPropertyGenericClass;
 
+//设置自定义类名衍射属性值
++ (nullable Class)modelCustomClassForDictionary:(NSDictionary *)dictionary;
 
+//设置属性黑名单Array，将忽略转化成model
++ (nullable NSArray<NSString *> *)modelPropertyBlacklist;
+
+//设置属性白名单Array，如果属性不在白名单，将被忽略转化成model
++ (nullable NSArray<NSString *> *)modelPropertyWhitelist;
+
+//与方法- (BOOL)modelCustomTransformFromDictionary:(NSDictionary *)dic;类似
+//但是在model转化之前调用
+- (NSDictionary *)modelCustomWillTransformFromDictionary:(NSDictionary *)dic;
+
+//
+- (BOOL)modelCustomTransformFromDictionary:(NSDictionary *)dic;
 ```
 
 
