@@ -1,0 +1,31 @@
+---
+layout: post
+title: "js window"
+date: 2016-08-05 15:34:42 +0800
+comments: true
+categories: 
+---
+
+ 
+```
+window.screenX，window.screenY
+返回浏览器窗口左上角相对于当前屏幕左上角（(0, 0)）的水平距离和垂直距离，单位为像素。
+```
+
+```
+window.innerHeight，window.innerWidth
+返回网页在当前窗口中可见部分的高度和宽度，即“视口”（viewport），单位为像素。
+注意，这两个属性值包括滚动条的高度和宽度。
+```
+
+```
+window.outerHeight，window.outerWidth
+回浏览器窗口的高度和宽度，包括浏览器菜单和边框，单位为像素。
+```
+
+```
+window.pageXOffset属性，window.pageYOffset属性
+返回页面的水平滚动距离     返回页面的垂直滚动距离，单位都为像素。
+```
+
+

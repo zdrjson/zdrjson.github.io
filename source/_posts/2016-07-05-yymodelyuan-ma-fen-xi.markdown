@@ -87,3 +87,77 @@ NSObject 分类方法就这么多，没有比较偏的，都是常用方法
 ```
 
 
+```
+yy_modelWithJSON json转模型内部看一下内部如何调用与设计的
+
+首先调用
+
++ (NSDictionary *)_yy_dictionaryWithJSON:(id)json  将json --> 字典 
+因为参数是id类型，所以要先装换为json ,其中有可能是空或者字符串或者NSData
+但都先转换为NSData 然后统一转换为字典
+if (!json || json == (id)kCFNull) return nil;
+    NSDictionary *dic = nil;
+    NSData *jsonData = nil;
+    if ([json isKindOfClass:[NSDictionary class]]) {
+        dic = json;
+    } else if ([json isKindOfClass:[NSString class]]) {
+        jsonData = [(NSString *)json dataUsingEncoding : NSUTF8StringEncoding];
+    } else if ([json isKindOfClass:[NSData class]]) {
+        jsonData = json;
+    }
+    if (jsonData) {
+        dic = [NSJSONSerialization JSONObjectWithData:jsonData options:kNilOptions error:NULL];
+        if (![dic isKindOfClass:[NSDictionary class]]) dic = nil;
+    }
+    return dic;
+```
+
+
+```
+接着是 yy_modelWithDictionary
+//第一个判断是否为空
+ if (!dictionary || dictionary == (id)kCFNull) return nil;
+    if (![dictionary isKindOfClass:[NSDictionary class]]) return nil;
+ //然后，判断是否有自定义类   
+ Class cls = [self class];
+    _YYModelMeta *modelMeta = [_YYModelMeta metaWithClass:cls];
+    if (modelMeta->_hasCustomClassFromDictionary) {
+        cls = [cls modelCustomClassForDictionary:dictionary] ?: cls;
+    }
+    
+//没有的话 直接字典转模型
+ NSObject *one = [cls new];
+    if ([one yy_modelSetWithDictionary:dictionary]) return one;
+
+其中 内部类 _YYModelMeta ,它包含类的信息model , metaWithClass 返回的是 缓存的model元类 有一个细节是字典非线程安全，所以从字典取值设值都有加锁
+
+/// Returns the cached model class meta
++ (instancetype)metaWithClass:(Class)cls {
+    if (!cls) return nil;
+    static CFMutableDictionaryRef cache;
+    static dispatch_once_t onceToken;
+    static dispatch_semaphore_t lock;
+    dispatch_once(&onceToken, ^{
+        cache = CFDictionaryCreateMutable(CFAllocatorGetDefault(), 0, &kCFTypeDictionaryKeyCallBacks, &kCFTypeDictionaryValueCallBacks);
+        lock = dispatch_semaphore_create(1);
+    });
+    dispatch_semaphore_wait(lock, DISPATCH_TIME_FOREVER);
+    _YYModelMeta *meta = CFDictionaryGetValue(cache, (__bridge const void *)(cls));
+    dispatch_semaphore_signal(lock);
+    //meta 为空或者 meta 类需要刷新 会重新初始化 _YYModelMeta对象
+    if (!meta || meta->_classInfo.needUpdate) {
+        meta = [[_YYModelMeta alloc] initWithClass:cls];
+        if (meta) {
+            dispatch_semaphore_wait(lock, DISPATCH_TIME_FOREVER);
+            CFDictionarySetValue(cache, (__bridge const void *)(cls), (__bridge const void *)(meta));
+            dispatch_semaphore_signal(lock);
+        }
+    }
+    return meta;
+}
+
+
+
+```
+  
+
