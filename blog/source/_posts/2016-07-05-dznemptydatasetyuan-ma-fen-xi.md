@@ -111,3 +111,20 @@ DZNEmptyDataSet 是一个UIscrollView的Category,用来无网络，无数据的�
     return class;
 ```
 
+
+
+     另一个设置代理，用户事件传递，设置占位图的属性，状态切换的监听
+     self.tableView.emptyDataSetDelegate = self;
+     
+     
+  - (void)setEmptyDataSetDelegate:(id<DZNEmptyDataSetDelegate>)delegate
+{
+    //没有代理设置 无网络占位视图不可用
+    if (!delegate) {
+        [self dzn_invalidate];
+    }
+    //给自己增加一个key值为kEmptyDataSetDelegate的DZNWeakObjectContainer弱引用对象属性
+    objc_setAssociatedObject(self, kEmptyDataSetDelegate, [[DZNWeakObjectContainer alloc] initWithWeakObject:delegate], OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+
