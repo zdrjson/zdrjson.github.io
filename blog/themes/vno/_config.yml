@@ -1,0 +1,27 @@
+menu:
+  #Archives: /archives
+  # 项目作品: /projects
+  # 关于我: /aboutme
+# rss: /atom.xml
+description: coding coding coding
+social:
+  weibo: http://weibo.com/5528701318/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1
+  github: https://github.com/zdrjson
+  stack_overflow: 
+  facebook: 
+  twitter: https://twitter.com/zdrjson
+  google_plus: 
+
+page_comment: false
+logo: /images/avatar.jpg
+background:
+  cover: /images/background-cover.jpg
+  color: cover-disabled
+
+archive_date_format: MMM DD
+fancybox: true
+
+duoshuo_shortname: 
+
+google_analytics: UA-42596364-1
+favicon: /images/favicon.png
