@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <title>Masonry源码分析 | Blog</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="coding coding coding">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Masonry源码分析 | Blog">
+    <meta name="twitter:description" content="coding coding coding">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Masonry源码分析 | Blog">
+    <meta property="og:description" content="coding coding coding">
+
+    
+    <meta name="author" content="zdrjson">
+    
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    
+    <link rel="icon" href="/images/favicon.png">
+    
+
+    <meta name="generator" content="hexo"/>
+    
+
+    <link rel="canonical" href="http://yoursite.com/2016/07/27/2016-07-27-masonryyuan-ma-fen-xi/"/>
+
+    
+</head>
+
+<body class="home-template no-js">
+
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/background-cover.jpg)">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="前往 Blog 的主页"><img src="/images/avatar.jpg" width="80" alt="Blog logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for Blog">Blog</a></h1>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">The trouble is that you think you have time</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">博客</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+  <li class="navigation__item">
+    <a href="http://weibo.com/5528701318/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo&amp;is_all=1" title="我的微博" target="_blank">
+      <i class='social fa fa-weibo'></i>
+      <span class="label">Weibo</span>
+    </a>
+  </li> 
+
+
+  <!-- Github -->
+  
+  <li class="navigation__item">
+    <a href="https://github.com/zdrjson" title="查看我的GitHub主页" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+
+<!-- Facebook -->
+
+  
+<!-- Twitter -->
+
+  <li class="navigation__item">
+    <a href="https://twitter.com/zdrjson" title="上Twitter找我" target="_blank">
+      <i class='social fa fa-twitter'></i>
+      <span class="label">Twitter</span>
+    </a>
+  </li>
+
+  
+
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-disabled"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2016-07-27T09:08:45.000Z" class="post-list__meta--date date">2016-07-27</time> &#8226; <span class="post-meta__tags tags">于&nbsp;</span>
+    </div>
+    <h1 class="post-title">Masonry源码分析</h1>
+  </header>
+
+  <section class="post">
+    <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div></pre></td><td class="code"><pre><div class="line">示例程序 常用方法 makeConstraints</div><div class="line">[greenView makeConstraints:^(MASConstraintMaker *make) &#123;</div><div class="line">        make.top.greaterThanOrEqualTo(superview.top).offset(padding);</div><div class="line">        make.left.equalTo(superview.left).offset(padding);</div><div class="line">        make.bottom.equalTo(blueView.top).offset(-padding);</div><div class="line">        make.right.equalTo(redView.left).offset(-padding);</div><div class="line">        make.width.equalTo(redView.width);</div><div class="line"></div><div class="line">        make.height.equalTo(redView.height);</div><div class="line">        make.height.equalTo(blueView.height);</div><div class="line">        </div><div class="line">    &#125;];</div><div class="line">    </div><div class="line"> 内部调用，在View+MASShortthandAdditions 中，view的category方法</div><div class="line"> param： 一个参数为 MASConstraintMaker实例的block</div><div class="line"> 返回值：数组</div><div class="line">- (NSArray *)mas_makeConstraints:(void(^)(MASConstraintMaker *))block &#123;</div><div class="line">    //首先数组view self.translatesAutoresizingMaskIntoConstraints的属性为NO</div><div class="line">    //为什么要设置 apple 文档中已经说明“ When you elect to position the view using auto layout by adding your own constraints, </div><div class="line"> you must set this property to NO. IB will do this for you.”</div><div class="line"></div><div class="line">    self.translatesAutoresizingMaskIntoConstraints = NO;</div><div class="line">    //创建一个MASConstraintMaker实例 把自己传进去</div><div class="line">    MASConstraintMaker *constraintMaker = [[MASConstraintMaker alloc] initWithView:self];</div><div class="line">    //回调block</div><div class="line">    block(constraintMaker);</div><div class="line">    //</div><div class="line">    return [constraintMaker install];</div><div class="line">&#125;  </div><div class="line"></div><div class="line"></div><div class="line">看一下 MASConstraintMaker 这个类，似乎挺重要</div><div class="line">初始化方法 保存需要设置约束的view 以及 初始化约束容器</div><div class="line">- (id)initWithView:(MAS_VIEW *)view &#123;</div><div class="line">    self = [super init];</div><div class="line">    if (!self) return nil;</div><div class="line">    </div><div class="line">    self.view = view;</div><div class="line">    self.constraints = NSMutableArray.new;</div><div class="line">    </div><div class="line">    return self;</div><div class="line">&#125;</div><div class="line">@interface MASConstraintMaker : NSObject 是一个基类的约束设置器</div><div class="line"></div><div class="line">//回到</div><div class="line">//block(constraintMaker); </div><div class="line">后面会调用 下面常写的链式调用，外部调用者写起来简单，也很明了，到底里面发生？接着往下看</div><div class="line">make.left.equalTo(superview.left).offset(padding);</div><div class="line"></div><div class="line"></div><div class="line">make.left --- &gt;内部是</div><div class="line">- (MASConstraint *)left &#123;</div><div class="line">    return [self addConstraintWithLayoutAttribute:NSLayoutAttributeLeft];</div><div class="line">&#125;</div><div class="line"></div><div class="line">接着又是调用</div><div class="line"></div><div class="line">- (MASConstraint *)addConstraintWithLayoutAttribute:(NSLayoutAttribute)layoutAttribute &#123;</div><div class="line">    return [self constraint:nil addConstraintWithLayoutAttribute:layoutAttribute];</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">最终</div><div class="line"></div><div class="line">- (MASConstraint *)constraint:(MASConstraint *)constraint addConstraintWithLayoutAttribute:(NSLayoutAttribute)layoutAttribute &#123;</div><div class="line">   //创建一个 MASViewAttribute 实例 ，初始化方法用 initWithView:方法</div><div class="line">    MASViewAttribute *viewAttribute = [[MASViewAttribute alloc] initWithView:self.view layoutAttribute:layoutAttribute];</div><div class="line">    </div><div class="line">    //创建一个 MASViewConstraint 实例， initWithFirstViewAttribute 把上面创建个实例传入进去</div><div class="line">    MASViewConstraint *newConstraint = [[MASViewConstraint alloc] initWithFirstViewAttribute:viewAttribute];</div><div class="line">    //参数constraint = nil 所以不会执行下面的if</div><div class="line">    if ([constraint isKindOfClass:MASViewConstraint.class]) &#123;</div><div class="line">        //replace with composite constraint</div><div class="line">        NSArray *children = @[constraint, newConstraint];</div><div class="line">        MASCompositeConstraint *compositeConstraint = [[MASCompositeConstraint alloc] initWithChildren:children];</div><div class="line">        compositeConstraint.delegate = self;</div><div class="line">        [self constraint:constraint shouldBeReplacedWithConstraint:compositeConstraint];</div><div class="line">        return compositeConstraint;</div><div class="line">    &#125;</div><div class="line">    //设置newConstraint 代理 并且添加到约束容器中</div><div class="line">    if (!constraint) &#123;</div><div class="line">        newConstraint.delegate = self;</div><div class="line">        [self.constraints addObject:newConstraint];</div><div class="line">    &#125;</div><div class="line">    返回 此约束</div><div class="line">    return newConstraint;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">在看一下</div><div class="line">make.top.equalTo(@20); 中 .equalTo(@20); 发生了</div><div class="line">进MASConstraint 头文件看，make.top.equalTo就是调用:</div><div class="line">- (MASConstraint * (^)(id attr))mas_equalTo;</div><div class="line"></div><div class="line">具体实现</div><div class="line"></div><div class="line">- (MASConstraint * (^)(id))mas_equalTo &#123;</div><div class="line">    return ^id(id attribute) &#123;</div><div class="line">        return self.equalToWithRelation(attribute, NSLayoutRelationEqual);</div><div class="line">    &#125;;</div><div class="line">&#125;</div><div class="line"></div><div class="line">//self.equalToWithRelation 即调用 MASViewConstraint 的父类方法</div><div class="line">父类中已经宏定义了必须由子类实现</div><div class="line"></div><div class="line">#define MASMethodNotImplemented() \</div><div class="line">    @throw [NSException exceptionWithName:NSInternalInconsistencyException \</div><div class="line">                                   reason:[NSString stringWithFormat:@&quot;You must override %@ in a subclass.&quot;, NSStringFromSelector(_cmd)] \</div><div class="line">                                 userInfo:nil]</div><div class="line">                                 </div><div class="line">                                 </div><div class="line">                                 </div><div class="line">                                 </div><div class="line">具体实现</div><div class="line"></div><div class="line">#pragma mark - NSLayoutRelation proxy</div><div class="line"></div><div class="line">- (MASConstraint * (^)(id, NSLayoutRelation))equalToWithRelation &#123;</div><div class="line">    return ^id(id attribute, NSLayoutRelation relation) &#123;</div><div class="line">        //不是属性数组进入else</div><div class="line">        if ([attribute isKindOfClass:NSArray.class]) &#123;</div><div class="line">            NSAssert(!self.hasLayoutRelation, @&quot;Redefinition of constraint relation&quot;);</div><div class="line">            NSMutableArray *children = NSMutableArray.new;</div><div class="line">            for (id attr in attribute) &#123;</div><div class="line">                MASViewConstraint *viewConstraint = [self copy];</div><div class="line">                viewConstraint.secondViewAttribute = attr;</div><div class="line">                [children addObject:viewConstraint];</div><div class="line">            &#125;</div><div class="line">            MASCompositeConstraint *compositeConstraint = [[MASCompositeConstraint alloc] initWithChildren:children];</div><div class="line">            compositeConstraint.delegate = self.delegate;</div><div class="line">            [self.delegate constraint:self shouldBeReplacedWithConstraint:compositeConstraint];</div><div class="line">            return compositeConstraint;</div><div class="line">        &#125; else &#123;</div><div class="line">        </div><div class="line">            NSAssert(!self.hasLayoutRelation || self.layoutRelation == relation &amp;&amp; [attribute isKindOfClass:NSValue.class], @&quot;Redefinition of constraint relation&quot;);</div><div class="line">            self.layoutRelation = relation;</div><div class="line">            self.secondViewAttribute = attribute;</div><div class="line">            return self;</div><div class="line">        &#125;</div><div class="line">    &#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+  </section>
+
+</article>
+
+
+
+            <footer class="footer">
+    <span class="footer__copyright">
+        本站点采用<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+    </span>
+    <span class="footer__copyright">
+        基于 <a href="http://hexo.io">Hexo</a> 搭建，感谢 <a href="https://pages.github.com/">GitHub Pages</a> 提供免费的托管服务
+    </span>
+    <span class="footer__copyright">
+        &copy; 2016 - 本站由 <a href="/">@zdrjson</a> 创建,
+        使用<a href="https://github.com/lenbo-ma/hexo-theme-vno">hexo-theme-vno</a>主题,
+        修改自<a href="http://github.com/onevcat/vno" target="_blank">Vno</a>
+    </span>
+</footer>
+
+        </div>
+    </div>
+
+    <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+
+     
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-42596364-1', 'auto');
+	ga('send', 'pageview');
+</script>
+
+</body>
+</html>

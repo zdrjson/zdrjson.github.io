@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <title>MBProgressHUD | Blog</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="coding coding coding">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="MBProgressHUD | Blog">
+    <meta name="twitter:description" content="coding coding coding">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="MBProgressHUD | Blog">
+    <meta property="og:description" content="coding coding coding">
+
+    
+    <meta name="author" content="zdrjson">
+    
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    
+    <link rel="icon" href="/images/favicon.png">
+    
+
+    <meta name="generator" content="hexo"/>
+    
+
+    <link rel="canonical" href="http://yoursite.com/2016/06/20/2016-06-20-mbprogresshud/"/>
+
+    
+</head>
+
+<body class="home-template no-js">
+
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/background-cover.jpg)">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="前往 Blog 的主页"><img src="/images/avatar.jpg" width="80" alt="Blog logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for Blog">Blog</a></h1>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">The trouble is that you think you have time</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">博客</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+  <li class="navigation__item">
+    <a href="http://weibo.com/5528701318/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo&amp;is_all=1" title="我的微博" target="_blank">
+      <i class='social fa fa-weibo'></i>
+      <span class="label">Weibo</span>
+    </a>
+  </li> 
+
+
+  <!-- Github -->
+  
+  <li class="navigation__item">
+    <a href="https://github.com/zdrjson" title="查看我的GitHub主页" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+
+<!-- Facebook -->
+
+  
+<!-- Twitter -->
+
+  <li class="navigation__item">
+    <a href="https://twitter.com/zdrjson" title="上Twitter找我" target="_blank">
+      <i class='social fa fa-twitter'></i>
+      <span class="label">Twitter</span>
+    </a>
+  </li>
+
+  
+
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-disabled"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2016-06-20T06:51:30.000Z" class="post-list__meta--date date">2016-06-20</time> &#8226; <span class="post-meta__tags tags">于&nbsp;</span>
+    </div>
+    <h1 class="post-title">MBProgressHUD</h1>
+  </header>
+
+  <section class="post">
+    <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">- (void)show:(BOOL)animated;</div><div class="line">- (void)hide:(BOOL)animated;</div></pre></td></tr></table></figure>
+<p>平时使用最多的方法之一，外部就简单的调用show或者hide，看内部如何封装的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">- (void)show:(BOOL)animated &#123;</div><div class="line">  // 非主线程直接崩</div><div class="line">    NSAssert([NSThread isMainThread], @&quot;MBProgressHUD needs to be accessed on the main thread.&quot;);</div><div class="line">    //记录动画flag</div><div class="line">	useAnimation = animated;</div><div class="line">	// If the grace time is set postpone the HUD display</div><div class="line">	//判断是否设置时间 </div><div class="line">	if (self.graceTime &gt; 0.0) &#123;</div><div class="line">        NSTimer *newGraceTimer = [NSTimer timerWithTimeInterval:self.graceTime target:self selector:@selector(handleGraceTimer:) userInfo:nil repeats:NO];</div><div class="line">        [[NSRunLoop currentRunLoop] addTimer:newGraceTimer forMode:NSRunLoopCommonModes];</div><div class="line">        self.graceTimer = newGraceTimer;</div><div class="line">	&#125; </div><div class="line">	// ... otherwise show the HUD imediately </div><div class="line">	else &#123;</div><div class="line">		[self showUsingAnimation:useAnimation];</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">#pragma mark - Internal show &amp; hide operations</div><div class="line">//内部方法</div><div class="line">- (void)showUsingAnimation:(BOOL)animated &#123;</div><div class="line">    // Cancel any scheduled hideDelayed: calls</div><div class="line">    //首先取消先前设置在HUD的selector,保证该方法不会多次调用</div><div class="line">    [NSObject cancelPreviousPerformRequestsWithTarget:self];</div><div class="line">    [self setNeedsDisplay];</div><div class="line"></div><div class="line">	if (animated &amp;&amp; animationType == MBProgressHUDAnimationZoomIn) &#123;</div><div class="line">		self.transform = CGAffineTransformConcat(rotationTransform, CGAffineTransformMakeScale(0.5f, 0.5f));</div><div class="line">	&#125; else if (animated &amp;&amp; animationType == MBProgressHUDAnimationZoomOut) &#123;</div><div class="line">		self.transform = CGAffineTransformConcat(rotationTransform, CGAffineTransformMakeScale(1.5f, 1.5f));</div><div class="line">	&#125;</div><div class="line">	//记录展示开始时间</div><div class="line">	self.showStarted = [NSDate date];</div><div class="line">	// Fade in</div><div class="line">	if (animated) &#123;</div><div class="line">		[UIView beginAnimations:nil context:NULL];</div><div class="line">		[UIView setAnimationDuration:0.30];</div><div class="line">		self.alpha = 1.0f;</div><div class="line">		if (animationType == MBProgressHUDAnimationZoomIn || animationType == MBProgressHUDAnimationZoomOut) &#123;</div><div class="line">			self.transform = rotationTransform;</div><div class="line">		&#125;</div><div class="line">		[UIView commitAnimations];</div><div class="line">	&#125;</div><div class="line">	else &#123;</div><div class="line">		self.alpha = 1.0f;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">- (void)hide:(BOOL)animated &#123;</div><div class="line">    //判断是否在主线程 非主线程直接崩</div><div class="line">    NSAssert([NSThread isMainThread], @&quot;MBProgressHUD needs to be accessed on the main thread.&quot;);</div><div class="line">	useAnimation = animated;</div><div class="line">	// If the minShow time is set, calculate how long the hud was shown,</div><div class="line">	// and pospone the hiding operation if necessary</div><div class="line">	//如果设置了最短展示时间，先比较展示到现在的时间与最短时间,如果前者小设置self.minShowTimer(有什么用？)，然后返回，在 (self.minShowTime - interv)差值时间后 执行</div><div class="line">		[self hideUsingAnimation:useAnimation];</div><div class="line">		</div><div class="line">	if (self.minShowTime &gt; 0.0 &amp;&amp; showStarted) &#123;</div><div class="line">		NSTimeInterval interv = [[NSDate date] timeIntervalSinceDate:showStarted];</div><div class="line">		if (interv &lt; self.minShowTime) &#123;</div><div class="line">			self.minShowTimer = [NSTimer scheduledTimerWithTimeInterval:(self.minShowTime - interv) target:self </div><div class="line">								selector:@selector(handleMinShowTimer:) userInfo:nil repeats:NO];</div><div class="line">			return;</div><div class="line">		&#125; </div><div class="line">	&#125;</div><div class="line">	// ... otherwise hide the HUD immediately</div><div class="line">	[self hideUsingAnimation:useAnimation];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>//隐藏主方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">- (void)hideUsingAnimation:(BOOL)animated &#123;</div><div class="line">	// Fade out</div><div class="line">	if (animated &amp;&amp; showStarted) &#123;</div><div class="line">		[UIView beginAnimations:nil context:NULL];</div><div class="line">		[UIView setAnimationDuration:0.30];</div><div class="line">		[UIView setAnimationDelegate:self];</div><div class="line">		[UIView setAnimationDidStopSelector:@selector(animationFinished:finished:context:)];</div><div class="line">		// 0.02 prevents the hud from passing through touches during the animation the hud will get completely hidden</div><div class="line">		// in the done method</div><div class="line">		if (animationType == MBProgressHUDAnimationZoomIn) &#123;</div><div class="line">			self.transform = CGAffineTransformConcat(rotationTransform, CGAffineTransformMakeScale(1.5f, 1.5f));</div><div class="line">		&#125; else if (animationType == MBProgressHUDAnimationZoomOut) &#123;</div><div class="line">			self.transform = CGAffineTransformConcat(rotationTransform, CGAffineTransformMakeScale(0.5f, 0.5f));</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		self.alpha = 0.02f;</div><div class="line">		[UIView commitAnimations];</div><div class="line">	&#125;</div><div class="line">	else &#123;</div><div class="line">		self.alpha = 0.0f;</div><div class="line">		//主要这行代码</div><div class="line">		[self done];</div><div class="line">	&#125;</div><div class="line">	//清空showStarted</div><div class="line">	self.showStarted = nil;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">- (void)done &#123;</div><div class="line">	[NSObject cancelPreviousPerformRequestsWithTarget:self];</div><div class="line">	//清空</div><div class="line">	isFinished = YES;</div><div class="line">	self.alpha = 0.0f;</div><div class="line">	if (removeFromSuperViewOnHide) &#123;</div><div class="line">		[self removeFromSuperview];</div><div class="line">	&#125;</div><div class="line">	//回调block与delegate,但得先判断</div><div class="line">#if NS_BLOCKS_AVAILABLE</div><div class="line">	if (self.completionBlock) &#123;</div><div class="line">		self.completionBlock();</div><div class="line">		self.completionBlock = NULL;</div><div class="line">	&#125;</div><div class="line">#endif</div><div class="line">	if ([delegate respondsToSelector:@selector(hudWasHidden:)]) &#123;</div><div class="line">		[delegate performSelector:@selector(hudWasHidden:) withObject:self];</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="关于自定义label或者detailLabel属性-作者用了KVO"><a href="#关于自定义label或者detailLabel属性-作者用了KVO" class="headerlink" title="关于自定义label或者detailLabel属性,作者用了KVO"></a>关于自定义label或者detailLabel属性,作者用了KVO</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div></pre></td><td class="code"><pre><div class="line">#pragma mark - KVO</div><div class="line"></div><div class="line">- (void)registerForKVO &#123;</div><div class="line">	for (NSString *keyPath in [self observableKeypaths]) &#123;</div><div class="line">		[self addObserver:self forKeyPath:keyPath options:NSKeyValueObservingOptionNew context:NULL];</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (void)unregisterFromKVO &#123;</div><div class="line">	for (NSString *keyPath in [self observableKeypaths]) &#123;</div><div class="line">		[self removeObserver:self forKeyPath:keyPath];</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (NSArray *)observableKeypaths &#123;</div><div class="line">	return [NSArray arrayWithObjects:@&quot;mode&quot;, @&quot;customView&quot;, @&quot;labelText&quot;, @&quot;labelFont&quot;, @&quot;labelColor&quot;,</div><div class="line">			@&quot;detailsLabelText&quot;, @&quot;detailsLabelFont&quot;, @&quot;detailsLabelColor&quot;, @&quot;progress&quot;, @&quot;activityIndicatorColor&quot;, nil];</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context &#123;</div><div class="line">	if (![NSThread isMainThread]) &#123;</div><div class="line">		[self performSelectorOnMainThread:@selector(updateUIForKeypath:) withObject:keyPath waitUntilDone:NO];</div><div class="line">	&#125; else &#123;</div><div class="line">		[self updateUIForKeypath:keyPath];</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (void)updateUIForKeypath:(NSString *)keyPath &#123;</div><div class="line">	if ([keyPath isEqualToString:@&quot;mode&quot;] || [keyPath isEqualToString:@&quot;customView&quot;] ||</div><div class="line">		[keyPath isEqualToString:@&quot;activityIndicatorColor&quot;]) &#123;</div><div class="line">		[self updateIndicators];</div><div class="line">	&#125; else if ([keyPath isEqualToString:@&quot;labelText&quot;]) &#123;</div><div class="line">		label.text = self.labelText;</div><div class="line">	&#125; else if ([keyPath isEqualToString:@&quot;labelFont&quot;]) &#123;</div><div class="line">		label.font = self.labelFont;</div><div class="line">	&#125; else if ([keyPath isEqualToString:@&quot;labelColor&quot;]) &#123;</div><div class="line">		label.textColor = self.labelColor;</div><div class="line">	&#125; else if ([keyPath isEqualToString:@&quot;detailsLabelText&quot;]) &#123;</div><div class="line">		detailsLabel.text = self.detailsLabelText;</div><div class="line">	&#125; else if ([keyPath isEqualToString:@&quot;detailsLabelFont&quot;]) &#123;</div><div class="line">		detailsLabel.font = self.detailsLabelFont;</div><div class="line">	&#125; else if ([keyPath isEqualToString:@&quot;detailsLabelColor&quot;]) &#123;</div><div class="line">		detailsLabel.textColor = self.detailsLabelColor;</div><div class="line">	&#125; else if ([keyPath isEqualToString:@&quot;progress&quot;]) &#123;</div><div class="line">		if ([indicator respondsToSelector:@selector(setProgress:)]) &#123;</div><div class="line">			[(id)indicator setValue:@(progress) forKey:@&quot;progress&quot;];</div><div class="line">		&#125;</div><div class="line">		return;</div><div class="line">	&#125;</div><div class="line">	[self setNeedsLayout];</div><div class="line">	[self setNeedsDisplay];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><ul>
+<li><a href="https://github.com/Draveness/iOS-Source-Code-Analyze/blob/master/MBProgressHUD/iOS%20源代码分析%20---%20MBProgressHUD.md" target="_blank" rel="external">iOS 源代码分析 — MBProgressHUD</a></li>
+<li><a href="http://southpeak.github.io/blog/2015/03/24/sourcecode-mbprogresshud/" target="_blank" rel="external">MBProgressHUD实现分析</a></li>
+<li><a href="http://blog.leichunfeng.com/blog/2015/03/16/talking-about-the-usage-of-mbprogresshud-combined-with-reveal/" target="_blank" rel="external">结合 Reveal 谈谈 MBProgressHUD 的用法</a></li>
+</ul>
+
+  </section>
+
+</article>
+
+
+
+            <footer class="footer">
+    <span class="footer__copyright">
+        本站点采用<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+    </span>
+    <span class="footer__copyright">
+        基于 <a href="http://hexo.io">Hexo</a> 搭建，感谢 <a href="https://pages.github.com/">GitHub Pages</a> 提供免费的托管服务
+    </span>
+    <span class="footer__copyright">
+        &copy; 2016 - 本站由 <a href="/">@zdrjson</a> 创建,
+        使用<a href="https://github.com/lenbo-ma/hexo-theme-vno">hexo-theme-vno</a>主题,
+        修改自<a href="http://github.com/onevcat/vno" target="_blank">Vno</a>
+    </span>
+</footer>
+
+        </div>
+    </div>
+
+    <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+
+     
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-42596364-1', 'auto');
+	ga('send', 'pageview');
+</script>
+
+</body>
+</html>

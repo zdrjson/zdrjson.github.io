@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <title>YYModel源码分析 | Blog</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="coding coding coding">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="YYModel源码分析 | Blog">
+    <meta name="twitter:description" content="coding coding coding">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="YYModel源码分析 | Blog">
+    <meta property="og:description" content="coding coding coding">
+
+    
+    <meta name="author" content="zdrjson">
+    
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    
+    <link rel="icon" href="/images/favicon.png">
+    
+
+    <meta name="generator" content="hexo"/>
+    
+
+    <link rel="canonical" href="http://yoursite.com/2016/07/05/2016-07-05-yymodelyuan-ma-fen-xi/"/>
+
+    
+</head>
+
+<body class="home-template no-js">
+
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/background-cover.jpg)">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="前往 Blog 的主页"><img src="/images/avatar.jpg" width="80" alt="Blog logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for Blog">Blog</a></h1>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">The trouble is that you think you have time</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">博客</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+  <li class="navigation__item">
+    <a href="http://weibo.com/5528701318/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo&amp;is_all=1" title="我的微博" target="_blank">
+      <i class='social fa fa-weibo'></i>
+      <span class="label">Weibo</span>
+    </a>
+  </li> 
+
+
+  <!-- Github -->
+  
+  <li class="navigation__item">
+    <a href="https://github.com/zdrjson" title="查看我的GitHub主页" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+
+<!-- Facebook -->
+
+  
+<!-- Twitter -->
+
+  <li class="navigation__item">
+    <a href="https://twitter.com/zdrjson" title="上Twitter找我" target="_blank">
+      <i class='social fa fa-twitter'></i>
+      <span class="label">Twitter</span>
+    </a>
+  </li>
+
+  
+
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-disabled"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2016-07-05T08:27:44.000Z" class="post-list__meta--date date">2016-07-05</time> &#8226; <span class="post-meta__tags tags">于&nbsp;</span>
+    </div>
+    <h1 class="post-title">YYModel源码分析</h1>
+  </header>
+
+  <section class="post">
+    <p>  总共2个类，相当tiny.</p>
+<ul>
+<li>YYClassInfo：从类名看出关于类Class的相关信息</li>
+<li>NSObject+YYModel ：NSObject的分类，意味着所有oc对象都可以有其中的方法</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">YYEncodingType 枚举 用来区分不同变量(第八位)、Qualifier(第8至16位)、属性(第16-24位类型)的类型、</div><div class="line"></div><div class="line"></div><div class="line">YYClassIvarInfo</div><div class="line">YYClassMethodInfo</div><div class="line">YYClassPropertyInfo</div><div class="line">YYClassInfo</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div></pre></td><td class="code"><pre><div class="line">NSObject+YYModel 提共的功能方法</div><div class="line">//json ---&gt; model</div><div class="line">1. + (nullable instancetype)modelWithJSON:(id)json;</div><div class="line">// Dic ---&gt; model</div><div class="line">2. + (nullable instancetype)modelWithDictionary:(NSDictionary *)dictionary;</div><div class="line">// model是否是json数据转化而来</div><div class="line">3. - (BOOL)modelSetWithJSON:(id)json;</div><div class="line">// model是否是dic转化而来</div><div class="line">4. - (BOOL)modelSetWithDictionary:(NSDictionary *)dic;</div><div class="line">// model ---&gt; json</div><div class="line">5. - (nullable id)modelToJSONObject;</div><div class="line">// model ---&gt; data</div><div class="line">6. - (nullable NSData *)modelToJSONData;</div><div class="line">// model ---&gt; string</div><div class="line">7. - (nullable NSString *)modelToJSONString;</div><div class="line">// 拷贝model</div><div class="line">8. - (nullable id)modelCopy;</div><div class="line">//  model序列化</div><div class="line">9. - (void)modelEncodeWithCoder:(NSCoder *)aCoder;</div><div class="line">// model反序列化</div><div class="line">10. - (id)modelInitWithCoder:(NSCoder *)aDecoder;</div><div class="line">// 得到一个modelHash code</div><div class="line">11. - (NSUInteger)modelHash;</div><div class="line">// 判断model是否是同一个</div><div class="line">12. - (BOOL)modelIsEqual:(id)model; </div><div class="line">// model信息描述</div><div class="line">13. - (NSString *)modelDescription; </div><div class="line"></div><div class="line"></div><div class="line">NSObject 分类方法就这么多，没有比较偏的，都是常用方法</div><div class="line"></div><div class="line">接下来是Array分类方法</div><div class="line"></div><div class="line">+ (nullable NSArray *)modelArrayWithClass:(Class)cls json:(id)json;</div><div class="line"></div><div class="line">接下来是NSDictionary分类方法</div><div class="line"></div><div class="line">+ (nullable NSDictionary *)modelDictionaryWithClass:(Class)cls json:(id)json;</div><div class="line"></div><div class="line">最后是 @protocol YYModel &lt;NSObject&gt; 协议方法</div><div class="line">都是可选</div><div class="line"></div><div class="line">//设置自定义属性名</div><div class="line">+ (nullable NSDictionary&lt;NSString *, id&gt; *)modelCustomPropertyMapper;</div><div class="line"></div><div class="line">//设置容器对应的类</div><div class="line">+ (nullable NSDictionary&lt;NSString *, id&gt; *)modelContainerPropertyGenericClass;</div><div class="line"></div><div class="line">//设置自定义类名衍射属性值</div><div class="line">+ (nullable Class)modelCustomClassForDictionary:(NSDictionary *)dictionary;</div><div class="line"></div><div class="line">//设置属性黑名单Array，将忽略转化成model</div><div class="line">+ (nullable NSArray&lt;NSString *&gt; *)modelPropertyBlacklist;</div><div class="line"></div><div class="line">//设置属性白名单Array，如果属性不在白名单，将被忽略转化成model</div><div class="line">+ (nullable NSArray&lt;NSString *&gt; *)modelPropertyWhitelist;</div><div class="line"></div><div class="line">//与方法- (BOOL)modelCustomTransformFromDictionary:(NSDictionary *)dic;类似</div><div class="line">//但是在model转化之前调用</div><div class="line">- (NSDictionary *)modelCustomWillTransformFromDictionary:(NSDictionary *)dic;</div><div class="line"></div><div class="line">//</div><div class="line">- (BOOL)modelCustomTransformFromDictionary:(NSDictionary *)dic;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">yy_modelWithJSON json转模型内部看一下内部如何调用与设计的</div><div class="line"></div><div class="line">首先调用</div><div class="line"></div><div class="line">+ (NSDictionary *)_yy_dictionaryWithJSON:(id)json  将json --&gt; 字典 </div><div class="line">因为参数是id类型，所以要先装换为json ,其中有可能是空或者字符串或者NSData</div><div class="line">但都先转换为NSData 然后统一转换为字典</div><div class="line">if (!json || json == (id)kCFNull) return nil;</div><div class="line">    NSDictionary *dic = nil;</div><div class="line">    NSData *jsonData = nil;</div><div class="line">    if ([json isKindOfClass:[NSDictionary class]]) &#123;</div><div class="line">        dic = json;</div><div class="line">    &#125; else if ([json isKindOfClass:[NSString class]]) &#123;</div><div class="line">        jsonData = [(NSString *)json dataUsingEncoding : NSUTF8StringEncoding];</div><div class="line">    &#125; else if ([json isKindOfClass:[NSData class]]) &#123;</div><div class="line">        jsonData = json;</div><div class="line">    &#125;</div><div class="line">    if (jsonData) &#123;</div><div class="line">        dic = [NSJSONSerialization JSONObjectWithData:jsonData options:kNilOptions error:NULL];</div><div class="line">        if (![dic isKindOfClass:[NSDictionary class]]) dic = nil;</div><div class="line">    &#125;</div><div class="line">    return dic;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line">接着是 yy_modelWithDictionary</div><div class="line">//第一个判断是否为空</div><div class="line"> if (!dictionary || dictionary == (id)kCFNull) return nil;</div><div class="line">    if (![dictionary isKindOfClass:[NSDictionary class]]) return nil;</div><div class="line"> //然后，判断是否有自定义类   </div><div class="line"> Class cls = [self class];</div><div class="line">    _YYModelMeta *modelMeta = [_YYModelMeta metaWithClass:cls];</div><div class="line">    if (modelMeta-&gt;_hasCustomClassFromDictionary) &#123;</div><div class="line">        cls = [cls modelCustomClassForDictionary:dictionary] ?: cls;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">//没有的话 直接字典转模型</div><div class="line"> NSObject *one = [cls new];</div><div class="line">    if ([one yy_modelSetWithDictionary:dictionary]) return one;</div><div class="line"></div><div class="line">其中 内部类 _YYModelMeta ,它包含类的信息model , metaWithClass 返回的是 缓存的model元类 有一个细节是字典非线程安全，所以从字典取值设值都有加锁</div><div class="line"></div><div class="line">/// Returns the cached model class meta</div><div class="line">+ (instancetype)metaWithClass:(Class)cls &#123;</div><div class="line">    if (!cls) return nil;</div><div class="line">    static CFMutableDictionaryRef cache;</div><div class="line">    static dispatch_once_t onceToken;</div><div class="line">    static dispatch_semaphore_t lock;</div><div class="line">    dispatch_once(&amp;onceToken, ^&#123;</div><div class="line">        cache = CFDictionaryCreateMutable(CFAllocatorGetDefault(), 0, &amp;kCFTypeDictionaryKeyCallBacks, &amp;kCFTypeDictionaryValueCallBacks);</div><div class="line">        lock = dispatch_semaphore_create(1);</div><div class="line">    &#125;);</div><div class="line">    dispatch_semaphore_wait(lock, DISPATCH_TIME_FOREVER);</div><div class="line">    _YYModelMeta *meta = CFDictionaryGetValue(cache, (__bridge const void *)(cls));</div><div class="line">    dispatch_semaphore_signal(lock);</div><div class="line">    //meta 为空或者 meta 类需要刷新 会重新初始化 _YYModelMeta对象</div><div class="line">    if (!meta || meta-&gt;_classInfo.needUpdate) &#123;</div><div class="line">        meta = [[_YYModelMeta alloc] initWithClass:cls];</div><div class="line">        if (meta) &#123;</div><div class="line">            dispatch_semaphore_wait(lock, DISPATCH_TIME_FOREVER);</div><div class="line">            CFDictionarySetValue(cache, (__bridge const void *)(cls), (__bridge const void *)(meta));</div><div class="line">            dispatch_semaphore_signal(lock);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    return meta;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+  </section>
+
+</article>
+
+
+
+            <footer class="footer">
+    <span class="footer__copyright">
+        本站点采用<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+    </span>
+    <span class="footer__copyright">
+        基于 <a href="http://hexo.io">Hexo</a> 搭建，感谢 <a href="https://pages.github.com/">GitHub Pages</a> 提供免费的托管服务
+    </span>
+    <span class="footer__copyright">
+        &copy; 2016 - 本站由 <a href="/">@zdrjson</a> 创建,
+        使用<a href="https://github.com/lenbo-ma/hexo-theme-vno">hexo-theme-vno</a>主题,
+        修改自<a href="http://github.com/onevcat/vno" target="_blank">Vno</a>
+    </span>
+</footer>
+
+        </div>
+    </div>
+
+    <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+
+     
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-42596364-1', 'auto');
+	ga('send', 'pageview');
+</script>
+
+</body>
+</html>
