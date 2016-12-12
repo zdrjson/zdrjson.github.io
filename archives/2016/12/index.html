@@ -137,6 +137,33 @@
   
     
     <li>
+      <h2 class="post-list__post-title post-title"><a href="/2016/12/12/python-装饰模式/" title="link to post.title">python 装饰模式</a></h2>
+      <p class="excerpt">
+    
+      
+直接上代码
+
+
+不需要编写wrapper.name = func.name这样的代码，Python内置的functools.wraps就是干这个事的，所以，一个完整的decorator的写法如下：
+
+def log(func):
+@functools.wraps(func)
+
+def wrapper(*args,**kw):
+
+    print(&amp;apos;call %s():&amp;apos; % func.__name__)
+
+    return func(*args, **kw)
+
+ret
+    &hellip;
+      </p>
+      <div class="post-list__meta"><time datetime="2016-12-12T03:04:09.000Z" class="post-list__meta--date date">2016-12-12</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;</span><a class="btn-border-small" href="/2016/12/12/python-装饰模式/">继续阅读</a></div>
+      <hr class="post-list__divider" />
+    </li>
+  
+    
+    <li>
       <h2 class="post-list__post-title post-title"><a href="/2016/12/02/NBP/" title="link to post.title">NBP</a></h2>
       <p class="excerpt">
     

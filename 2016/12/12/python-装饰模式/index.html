@@ -4,7 +4,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     
-    <title>Blog</title>
+    <title>python 装饰模式 | Blog</title>
     <meta name="renderer" content="webkit">
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
@@ -15,11 +15,11 @@
     <meta name="description" content="coding coding coding">
 
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Blog">
+    <meta name="twitter:title" content="python 装饰模式 | Blog">
     <meta name="twitter:description" content="coding coding coding">
 
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Blog">
+    <meta property="og:title" content="python 装饰模式 | Blog">
     <meta property="og:description" content="coding coding coding">
 
     
@@ -35,7 +35,7 @@
     <meta name="generator" content="hexo"/>
     
 
-    <link rel="canonical" href="http://yoursite.com"/>
+    <link rel="canonical" href="http://yoursite.com/2016/12/12/python-装饰模式/"/>
 
     
 </head>
@@ -131,103 +131,54 @@
 
     <div class="content-wrapper">
         <div class="content-wrapper__inner">
-            <div class="main-post-list">
-    
-  <ol class="post-list">
-  
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2016/12/12/python-装饰模式/" title="link to post.title">python 装饰模式</a></h2>
-      <p class="excerpt">
-    
-      
-直接上代码
+            <article class="post-container post-container--single">
 
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2016-12-12T03:04:09.000Z" class="post-list__meta--date date">2016-12-12</time> &#8226; <span class="post-meta__tags tags">于&nbsp;</span>
+    </div>
+    <h1 class="post-title">python 装饰模式</h1>
+  </header>
 
-不需要编写wrapper.name = func.name这样的代码，Python内置的functools.wraps就是干这个事的，所以，一个完整的decorator的写法如下：
-
-def log(func):
-@functools.wraps(func)
+  <section class="post">
+    <ul>
+<li>直接上代码</li>
+</ul>
+<ul>
+<li>不需要编写wrapper.<strong>name</strong> = func.<strong>name</strong>这样的代码，Python内置的functools.wraps就是<br>干这个事的，所以，一个完整的decorator的写法如下：</li>
+</ul>
+<p>def log(func):</p>
+<pre><code>@functools.wraps(func)
 
 def wrapper(*args,**kw):
 
-    print(&amp;apos;call %s():&amp;apos; % func.__name__)
+    print(&apos;call %s():&apos; % func.__name__)
 
     return func(*args, **kw)
 
-ret
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2016-12-12T03:04:09.000Z" class="post-list__meta--date date">2016-12-12</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;</span><a class="btn-border-small" href="/2016/12/12/python-装饰模式/">继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-  
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2016/12/02/NBP/" title="link to post.title">NBP</a></h2>
-      <p class="excerpt">
-    
-      
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2016-12-02T11:31:57.000Z" class="post-list__meta--date date">2016-12-02</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;</span><a class="btn-border-small" href="/2016/12/02/NBP/">继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-  
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2016/09/23/Internet/" title="link to post.title">Internet</a></h2>
-      <p class="excerpt">
-    
-      1.How does Internet make money?2.What can make money that can to burn?
+return wrapper
+</code></pre><p>def log(text):</p>
+<pre><code>def decorator(func):
 
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2016-09-23T07:39:51.000Z" class="post-list__meta--date date">2016-09-23</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;</span><a class="btn-border-small" href="/2016/09/23/Internet/">继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-  
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2016/08/24/rename/" title="link to post.title">rename</a></h2>
-      <p class="excerpt">
-    
-       设计师做了这样命名的logo   
-  为了效率  首先想到shell script 批量处理  后来发现 homebrew 有 rename
-rename ‘s/.png/\@3x.png/‘ *就变成了   
+    @functools.wraps(func)
 
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2016-08-24T12:16:56.000Z" class="post-list__meta--date date">2016-08-24</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;</span><a class="btn-border-small" href="/2016/08/24/rename/">继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-  
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2016/08/11/2016-08-11-node-dot-js-yun-xing-yuan-li/" title="link to post.title">node.js 运行原理</a></h2>
-      <p class="excerpt">
-    
-      
+    def wrapper(*args, **kw):
 
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2016-08-11T06:53:05.000Z" class="post-list__meta--date date">2016-08-11</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;</span><a class="btn-border-small" href="/2016/08/11/2016-08-11-node-dot-js-yun-xing-yuan-li/">继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-  
-    
-  </ol>
+        print(&apos;%s %s()&apos; %(text, func.__name__))
 
+        return func(*args, **kw)
 
-  <nav class="pagination" role="navigation">
-    
-    
-      <a class="older-posts pagination__older btn btn-small btn-tertiary" href="/archives/2016/page/2/">Next</a>
-    
-  </nav>
+    return wrapper
 
+return decorator
+</code></pre><!-- ``` -->
+<ul>
+<li><a href="http://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/0014318435599930270c0381a3b44db991cd6d858064ac0000" target="_blank" rel="external">reference</a></li>
+</ul>
 
-</div>
+  </section>
+
+</article>
 
 
 
