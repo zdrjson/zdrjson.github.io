@@ -1,11 +1,11 @@
 menu:
-  #Archives: /archives
+  #Archives: /archives http://weibo.com/5528701318/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1
   # 项目作品: /projects
   # 关于我: /aboutme
 # rss: /atom.xml
 description: coding coding coding
 social:
-  weibo: http://weibo.com/5528701318/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1
+  weibo: http://weibo.com/5339146962/profile?topnav=1&wvr=6
   github: https://github.com/zdrjson
   stack_overflow: 
   facebook: 
