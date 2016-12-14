@@ -6,4 +6,5 @@ tags:
 
 1.How does Internet make money?
 2.What can make money that can to burn?
+answer：广告联盟（流量进来）
 
