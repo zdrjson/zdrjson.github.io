@@ -137,100 +137,27 @@
   
     
     <li>
-      <h2 class="post-list__post-title post-title"><a href="/2016/06/20/2016-06-20-mbprogresshud/" title="link to post.title">MBProgressHUD</a></h2>
+      <h2 class="post-list__post-title post-title"><a href="/2017/01/18/程序员关注的重点/" title="link to post.title">程序员关注的重点</a></h2>
       <p class="excerpt">
     
-      12- (void)show:(BOOL)animated;- (void)hide:(BOOL)animated;
-平时使用最多的方法之一，外部就简单的调用show或者hide，看内部如何封装的
-1234567891011121314151617- (void)show:(BOOL)animated &amp;#123;  // 非主线程直接崩    NSAssert([NSThread isMainThread], @&amp;quot;MBProgressHUD needs to be accessed 
+      
+技术(你生存的基础)
+英语(决定你能否成为合格程序员的基础)
+时间(合理高效率利用时间，不一定每天都要coding，除非你非常感兴趣或者你写出难以置信的代码影响很多人，留出足够时间思想未来，如果你不想就这样写一辈子代码。时间是花在高价值的事物上的)
+钱(从产品写代码与从技术写代码是完全不一样的，如何赚钱以及赚更多、更持久。是一个程序员必须思考的问题)
+产品(个人觉得从产品写代码更高效)
+家庭(不要整天写代码，家人多关心下)
+资源(包括不限于人脉，事物，关系)
+创业(能让你成为难以置信的人，前提
     &hellip;
       </p>
-      <div class="post-list__meta"><time datetime="2016-06-20T06:51:30.000Z" class="post-list__meta--date date">2016-06-20</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;</span><a class="btn-border-small" href="/2016/06/20/2016-06-20-mbprogresshud/">继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-  
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2016/06/20/2016-06-20-runtime/" title="link to post.title">runtime</a></h2>
-      <p class="excerpt">
-    
-      What is runtime?1.runtime是一套底层的C语言API(包含很多强大实用的C语言数据类型、C语言函数)2.实际上，平时我们编写的OC代码，底层都是基于runtime实现的，也就是说，平时我们编写的OC代码，最终都是转成了底层的runtime代码(c语言代码)
-runtime 有什么用处？1.动态产生一个类，一个成员变量、一个方法
-2.动态修改一个类，一个成员变量、一个方法
-3.动态删除一个类，一个成员变量、一个方法
-常见的函数、头文件#import&amp;lt;objc/runti
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2016-06-20T05:42:14.000Z" class="post-list__meta--date date">2016-06-20</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;</span><a class="btn-border-small" href="/2016/06/20/2016-06-20-runtime/">继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-  
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2016/06/17/2016-06-17-audiofilestreamer/" title="link to post.title">AudioFileStreamer</a></h2>
-      <p class="excerpt">
-    
-      Audio File Stream Services supports the following audio data types:
-
-AIFF 
-AIFC 
-WAVE 
-CAF 
-NeXT 
-ADTS 
-MPEG Audio Layer 3 
-AAC
-
-reference
-
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2016-06-17T09:19:42.000Z" class="post-list__meta--date date">2016-06-17</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;</span><a class="btn-border-small" href="/2016/06/17/2016-06-17-audiofilestreamer/">继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-  
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2016/06/16/2016-06-16-kvc/" title="link to post.title">KVC</a></h2>
-      <p class="excerpt">
-    
-        首页要了解setValue:ForKeyPath:方法的底层实现：以name属性为例
- 1.首先先去类的方法列表去寻找有没有setName：如果有，就直接调用[person setName:value]
- 2.找找有没有下划线的成员变量_name,如果有_name = value;
- 3.找有没有成员变量name,如果有name = value;
- 4.如果都没有找到，就直接报错
-
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2016-06-16T11:32:03.000Z" class="post-list__meta--date date">2016-06-16</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;</span><a class="btn-border-small" href="/2016/06/16/2016-06-16-kvc/">继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-  
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2016/06/16/2016-06-16-yun-xing-shi-yu-bian-yi-shi/" title="link to post.title">运行时与编译时</a></h2>
-      <p class="excerpt">
-    
-      #编译时
-编译时顾名思义就是正在编译的时候.那啥叫编译呢?就是编译器帮你把源代码翻译成机器能识别的代码.(当然只是一般意义上这么说,实际上可能只是翻译成某个中间状态的语言.比如Java只有JVM识别的字节码,C#中只有CLR能识别的MSIL.另外还有啥链接器.汇编器.为了了便于理解我们可以统称为编译器)那编译时就是简单的作一些翻译工作,比如检查老兄你有没有粗心写错啥关键字了啊.有啥词法分析,语法分析之类的过程.就像个老师检查学生的作文中有没有错别字和病句一样.如果发现啥错误编译器就告诉你.如果你
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2016-06-16T06:51:15.000Z" class="post-list__meta--date date">2016-06-16</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;</span><a class="btn-border-small" href="/2016/06/16/2016-06-16-yun-xing-shi-yu-bian-yi-shi/">继续阅读</a></div>
+      <div class="post-list__meta"><time datetime="2017-01-18T03:41:43.000Z" class="post-list__meta--date date">2017-01-18</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;</span><a class="btn-border-small" href="/2017/01/18/程序员关注的重点/">继续阅读</a></div>
       <hr class="post-list__divider" />
     </li>
   
     
   </ol>
 
-
-  <nav class="pagination" role="navigation">
-    
-      <a class="older-posts pagination__older btn btn-small btn-tertiary" href="/archives/page/5/">Prev</a>
-    
-    
-      <a class="older-posts pagination__older btn btn-small btn-tertiary" href="/archives/page/7/">Next</a>
-    
-  </nav>
 
 
 </div>
