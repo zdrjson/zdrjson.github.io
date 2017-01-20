@@ -137,6 +137,33 @@
   
     
     <li>
+      <h2 class="post-list__post-title post-title"><a href="/2016/12/12/python-装饰模式/" title="link to post.title">python 装饰模式</a></h2>
+      <p class="excerpt">
+    
+      
+直接上代码
+
+
+不需要编写wrapper.name = func.name这样的代码，Python内置的functools.wraps就是干这个事的，所以，一个完整的decorator的写法如下：
+
+def log(func):
+@functools.wraps(func)
+
+def wrapper(*args,**kw):
+
+    print(&amp;apos;call %s():&amp;apos; % func.__name__)
+
+    return func(*args, **kw)
+
+ret
+    &hellip;
+      </p>
+      <div class="post-list__meta"><time datetime="2016-12-12T03:04:09.000Z" class="post-list__meta--date date">2016-12-12</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;</span><a class="btn-border-small" href="/2016/12/12/python-装饰模式/">继续阅读</a></div>
+      <hr class="post-list__divider" />
+    </li>
+  
+    
+    <li>
       <h2 class="post-list__post-title post-title"><a href="/2016/12/02/NBP/" title="link to post.title">NBP</a></h2>
       <p class="excerpt">
     
@@ -185,20 +212,6 @@ rename ‘s/.png/\@3x.png/‘ *就变成了
     &hellip;
       </p>
       <div class="post-list__meta"><time datetime="2016-08-11T06:53:05.000Z" class="post-list__meta--date date">2016-08-11</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;</span><a class="btn-border-small" href="/2016/08/11/2016-08-11-node-dot-js-yun-xing-yuan-li/">继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-  
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2016/08/10/2016-08-10-fdfullscreenpopgesture-yuan-ma-fen-xi/" title="link to post.title">FDFullscreenPopGesture 源码分析</a></h2>
-      <p class="excerpt">
-    
-      需求：大屏手机要求更多用户要求导航控制器全屏手势返回，而不满足原生的左侧一小段系统手势返回code: 导航控制器的分类
-具体实现：
-12345678910111213141516171819202122232425262728293031323334353637在 load 方法中 交互导航控制器的 pushViewController:animated: 方法+ (void)load&amp;#123;    // Inject &amp;quot;-pushViewController:animated:&amp;
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2016-08-10T11:58:57.000Z" class="post-list__meta--date date">2016-08-10</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;</span><a class="btn-border-small" href="/2016/08/10/2016-08-10-fdfullscreenpopgesture-yuan-ma-fen-xi/">继续阅读</a></div>
       <hr class="post-list__divider" />
     </li>
   
